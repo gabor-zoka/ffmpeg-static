@@ -19,6 +19,7 @@ makedepends=(
   bzip2
   xz
   zlib
+  x265
 )
 source=(
   FFmpeg-n$pkgver.tar.gz::https://github.com/FFmpeg/FFmpeg/archive/n$pkgver.tar.gz
@@ -43,10 +44,12 @@ build() {
     --extra-ldflags=-static \
     --enable-gray \
     --disable-debug \
+    --enable-gpl \
+    --disable-ffplay \
+    --disable-doc \
     --disable-encoder=vorbis \
     --enable-libvorbis \
-    --disable-ffplay \
-    --disable-doc
+    --enable-libx265
 
   make
 }

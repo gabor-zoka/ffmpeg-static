@@ -49,4 +49,7 @@ As gabor:
     cd /home/gabor/sw/ffmpeg-static/asp/xz
     sudo makechrootpkg -T -c -r $r
 
+    cd /home/gabor/sw/ffmpeg-static/asp/x265
+    sudo makechrootpkg -T -c -r $r
+
     /home/gabor/sw/ffmpeg-static/ffmpeg.sh
