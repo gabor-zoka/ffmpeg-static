@@ -37,6 +37,7 @@ package() {
   ln -sf bzip2 "$pkgdir"/usr/bin/bzcat
 
   cp -a libbz2.so* "$pkgdir"/usr/lib
+  cp -a libbz2.a   "$pkgdir"/usr/lib
   ln -s libbz2.so.$pkgver "$pkgdir"/usr/lib/libbz2.so
   ln -s libbz2.so.$pkgver "$pkgdir"/usr/lib/libbz2.so.1 # For compatibility with some other distros
 

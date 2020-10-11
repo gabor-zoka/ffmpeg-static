@@ -4,38 +4,37 @@
 # Contributor: Robert Gregor <gimpΘpop·de>
 
 pkgname=libvorbis-aotuv
-pkgver=b6.03.2018
-pkgrel=2
-_srcrel=beta6.03-2018
+pkgver=1.3.7_b6.03
+pkgrel=1
 pkgdesc="aoTuV is software library for encoding and decoding of OggVorbis that modified encoding part of Xiph.Org's libvorbis."
 arch=('i686' 'x86_64')
 url='https://ao-yumi.github.io/aotuv_web/'
 license=('BSD')
 depends=('libogg')
 conflicts=('libvorbis')
-provides=('libvorbis=1.3.6' 'libvorbisfile.so' 'libvorbis.so' 'libvorbisenc.so')
-source=("https://github.com/AO-Yumi/vorbis_aotuv/archive/${_srcrel}.tar.gz")
-md5sums=('ed5130f9f3196f0dd0a6e50bc3c27586')
-sha256sums=('abbb526b241442d66ab4226a2beea39a0d61a57e2b05aca98cb7e823585d8ba2')
+provides=('libvorbis=1.3.7' 'libvorbisfile.so' 'libvorbis.so' 'libvorbisenc.so')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/gabor-zoka/vorbis_aotuv/archive/$pkgver.tar.gz")
+md5sums=('cda2ddc27dd41b52c6d99efc3e25f99d')
+sha256sums=('a3b8b3d5ed0602ad14326678c94af8eea0d368b4b0371ccd1bee46fa84c21a34')
 
 prepare() {
-	cd "vorbis_aotuv-${_srcrel}"
+	cd "vorbis_aotuv-${pkgver}"
 	chmod +x configure
 }
 
 build() {
-	cd "vorbis_aotuv-${_srcrel}"
-	./configure --prefix=/usr --disable-static
+	cd "vorbis_aotuv-${pkgver}"
+	./configure --prefix=/usr
 	make
 }
 
 check() {
-	cd "vorbis_aotuv-${_srcrel}"
+	cd "vorbis_aotuv-${pkgver}"
 	make -j1 check
 }
 
 package() {
-	cd "vorbis_aotuv-${_srcrel}"
+	cd "vorbis_aotuv-${pkgver}"
 	make DESTDIR="$pkgdir" install
 	install -Dm644 LICENCE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

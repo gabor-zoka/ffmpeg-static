@@ -32,8 +32,7 @@ prepare() {
 build() {
   local CFLAGS="$CPPFLAGS $CFLAGS" CXXFLAGS="$CPPFLAGS $CXXFLAGS"
   cmake -Hogg -Bbuild -G Ninja \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DBUILD_SHARED_LIBS=ON
+    -DCMAKE_INSTALL_PREFIX=/usr
   cmake --build build
 }
 
