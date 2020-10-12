@@ -7,4 +7,5 @@ sudo makechrootpkg -T -c -r $r\
     -I $p/libogg-*.pkg.tar.zst\
     -I $p/xz-*.pkg.tar.zst\
     -I $p/bzip2-*.pkg.tar.zst\
-    -I $p/x265-*.pkg.tar.zst
+    -I $p/x265-*.pkg.tar.zst \
+    -I $p/x264-*.pkg.tar.zst

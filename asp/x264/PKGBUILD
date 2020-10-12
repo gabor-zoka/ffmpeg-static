@@ -12,17 +12,12 @@ pkgdesc='Open Source H264/AVC video encoder'
 arch=(x86_64)
 url=https://www.videolan.org/developers/x264.html
 license=(GPL)
-depends=(
-  liblsmash.so
-)
 makedepends=(
   git
-  l-smash
   nasm
 )
 provides=(
-  libx264
-  libx264.so
+  libx264.a
 )
 conflicts=(
   libx264
@@ -49,15 +44,19 @@ build() {
 
   ./configure \
     --prefix=/usr \
-    --enable-shared \
-    --enable-pic \
-    --enable-lto \
-    --disable-avs
+    --enable-static \
+    --disable-opencl \
+    --disable-avs \
+    --disable-cli \
+    --disable-ffms \
+    --disable-gpac \
+    --disable-lavf \
+    --disable-swscale
   make
 }
 
 package() {
-  make -C x264 DESTDIR="${pkgdir}" install-cli install-lib-shared
+  make -C x264 DESTDIR="${pkgdir}" install-lib-static
 }
 
 # vim: ts=2 sw=2 et:
