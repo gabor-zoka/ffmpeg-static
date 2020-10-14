@@ -22,6 +22,7 @@ makedepends=(
   x265
   x264
   lame
+  aom
 )
 source=(
   FFmpeg-n$pkgver.tar.gz::https://github.com/FFmpeg/FFmpeg/archive/n$pkgver.tar.gz
@@ -53,7 +54,8 @@ build() {
     --enable-libvorbis \
     --enable-libx265 \
     --enable-libx264 \
-    --enable-libmp3lame
+    --enable-libmp3lame \
+    --enable-libaom
 
   make
 }

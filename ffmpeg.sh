@@ -9,4 +9,5 @@ sudo makechrootpkg -T -c -r $r\
     -I $p/bzip2-*.pkg.tar.zst\
     -I $p/x265-*.pkg.tar.zst \
     -I $p/x264-*.pkg.tar.zst \
-    -I $p/lame-*.pkg.tar.zst
+    -I $p/lame-*.pkg.tar.zst \
+    -I $p/aom-*.pkg.tar.zst

@@ -58,6 +58,10 @@ As gabor:
     cd /home/gabor/sw/ffmpeg-static/asp/lame
     sudo makechrootpkg -T -c -r $r
 
+    cd /home/gabor/sw/ffmpeg-static/asp/aom
+    sudo makechrootpkg -T -c -r $r
+
     /home/gabor/sw/ffmpeg-static/ffmpeg.sh
+
 
 
