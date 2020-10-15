@@ -23,6 +23,7 @@ makedepends=(
   x264
   lame
   aom
+  libsoxr
 )
 source=(
   FFmpeg-n$pkgver.tar.gz::https://github.com/FFmpeg/FFmpeg/archive/n$pkgver.tar.gz
@@ -40,6 +41,8 @@ prepare() {
 build() {
   cd FFmpeg-n$pkgver
 
+  perl -i -p -e 's{-lsoxr}{-lsoxr -lm}' configure
+
   ./configure \
     --prefix=/usr \
     --cpu=host \
@@ -55,7 +58,8 @@ build() {
     --enable-libx265 \
     --enable-libx264 \
     --enable-libmp3lame \
-    --enable-libaom
+    --enable-libaom \
+    --enable-libsoxr
 
   make
 }
