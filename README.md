@@ -61,7 +61,21 @@ As gabor:
     cd /home/gabor/sw/ffmpeg-static/asp/aom
     sudo makechrootpkg -T -c -r $r
 
+    cd /home/gabor/sw/ffmpeg-static/asp/libsndfile
+    sudo makechrootpkg -T -c -r $r
+
+    cd /home/gabor/sw/ffmpeg-static/asp/libbs2b
+    sudo makechrootpkg -T -c -r $r -I $p/libsndfile-*.pkg.tar.zst
+
+    cd /home/gabor/sw/ffmpeg-static/asp/dav1d
+    sudo makechrootpkg -T -c -r $r
+
+    cd /home/gabor/sw/ffmpeg-static/asp/libsoxr
+    sudo makechrootpkg -T -c -r $r
+
     /home/gabor/sw/ffmpeg-static/ffmpeg.sh
+
+
 
 
 

@@ -7,10 +7,8 @@ pkgdesc="A C library for reading and writing files containing sampled sound"
 arch=('x86_64')
 url="http://www.mega-nerd.com/libsndfile"
 license=('LGPL2.1')
-depends=('glibc' 'libFLAC.so' 'libogg' 'libvorbis.so' 'libvorbisenc.so')
-makedepends=('alsa-lib')
-optdepends=('alsa-lib: for sndfile-play')
-provides=('libsndfile.so')
+depends=('glibc')
+provides=('libsndfile.a')
 source=("http://www.mega-nerd.com/libsndfile/files/$pkgname-$pkgver.tar.gz"{,.asc})
 sha512sums=('890731a6b8173f714155ce05eaf6d991b31632c8ab207fbae860968861a107552df26fcf85602df2e7f65502c7256c1b41735e1122485a3a07ddb580aa83b57f'
             'SKIP')
@@ -23,7 +21,11 @@ prepare() {
 
 build() {
   cd "$pkgname-$pkgver"
-  ./configure --prefix=/usr --disable-sqlite
+  ./configure --prefix=/usr\
+    --disable-sqlite\
+    --disable-alsa\
+    --disable-external-libs\
+    --disable-full-suite
   make
 }
 

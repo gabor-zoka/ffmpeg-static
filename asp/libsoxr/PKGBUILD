@@ -29,10 +29,10 @@ build() {
     -DCMAKE_BUILD_TYPE='Release' \
     -DCMAKE_INSTALL_PREFIX='/usr' \
     -DBUILD_EXAMPLES='OFF' \
-    -DBUILD_SHARED_LIBS='ON' \
-    -DWITH_AVFFT='ON' \
+    -DBUILD_SHARED_LIBS='OFF' \
+    -DWITH_AVFFT='OFF' \
     -DWITH_LSR_BINDINGS='ON' \
-    -DWITH_OPENMP='ON' \
+    -DWITH_OPENMP='OFF' \
     -DWITH_PFFFT='ON'
   make
 }
