@@ -7,9 +7,13 @@ pkgdesc='AV1 cross-platform decoder focused on speed and correctness'
 url='https://code.videolan.org/videolan/dav1d/'
 arch=('x86_64')
 license=('BSD')
-depends=('glibc' 'vulkan-icd-loader')
-makedepends=('meson' 'ninja' 'nasm' 'vulkan-headers')
-provides=('libdav1d.so')
+depends=('glibc')
+makedepends=('meson' 'ninja' 'nasm')
+provides=('libdav1d.a')
+# Long hours wasted by the time I found why the old build worked, and the new does not:
+# https://github.com/mesonbuild/meson/issues/4138
+# Here makepkg strips. This stops stripping for this PKGBUILD.
+options=(!strip)
 source=(https://downloads.videolan.org/pub/videolan/${pkgname}/${pkgver}/${pkgname}-${pkgver}.tar.xz{,.asc})
 sha512sums=('fe7f4a4a547d1239e62025bb40d2f7f97e9fbdfde1d32f9930497801b703a68050ee2fa79793c1cd0c4723678a0736f32431e1b711f63f5de782fe675e5c82de'
             'SKIP')

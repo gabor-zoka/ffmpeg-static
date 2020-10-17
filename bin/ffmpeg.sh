@@ -11,6 +11,7 @@ sudo makechrootpkg -T -c -r $r\
     -I $p/x264-*.pkg.tar.zst\
     -I $p/lame-*.pkg.tar.zst\
     -I $p/aom-*.pkg.tar.zst\
-    -I $p/libsoxr-*.pkg.tar.zst \
-    -I $p/libsndfile-*.pkg.tar.zst \
-    -I $p/libbs2b-*.pkg.tar.zst
+    -I $p/libsoxr-*.pkg.tar.zst\
+    -I $p/libsndfile-*.pkg.tar.zst\
+    -I $p/libbs2b-*.pkg.tar.zst\
+    -I $p/dav1d-*.pkg.tar.zst
