@@ -18,17 +18,21 @@ sha256sums=('f1063084dc4302a427dabcca499c8312b3a32a29b7d2506653ecc8f950a9a237'
 
 build() {
   cd $pkgname-$pkgver
-  cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DEXPAT_SHARED_LIBS=OFF -S . -B build
-  cmake --build build
+
+  ./configure --prefix=/usr\
+    --without-examples\
+    --without-docbook
+  make
 }
 
 check() {
   cd $pkgname-$pkgver
-  cmake --build build --target tests
+
+  make check
 }
 
 package() {
   cd $pkgname-$pkgver
-  cmake --build build --target install -- DESTDIR="$pkgdir"
-  install -Dm644 "-t$pkgdir/usr/share/licenses/$pkgname" COPYING
+
+  make DESTDIR="$pkgdir" install
 }
