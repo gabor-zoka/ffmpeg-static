@@ -77,3 +77,7 @@ sudo makechrootpkg -T -c -r $r -I $p/zlib-*.pkg.tar.zst -I $p/bzip2-*.pkg.tar.zs
 
 cd /home/gabor/sw/ffmpeg-static/asp/fontconfig
 sudo makechrootpkg -T -c -r $r -I $p/expat-*.pkg.tar.zst -I $p/freetype2-*.pkg.tar.zst -I $p/zlib-*.pkg.tar.zst -I $p/bzip2-*.pkg.tar.zst -I $p/libpng-*.pkg.tar.zst
+
+#cd /home/gabor/sw/ffmpeg-static/asp/libass
+#sudo makechrootpkg -T -c -r $r -I $p/freetype2-*.pkg.tar.zst -I $p/fontconfig-*.pkg.tar.zst
+
