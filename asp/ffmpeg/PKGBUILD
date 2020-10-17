@@ -31,6 +31,7 @@ makedepends=(
   speex
   vid.stab
   libwebp
+  freetype2
 )
 source=(
   FFmpeg-n$pkgver.tar.gz::https://github.com/FFmpeg/FFmpeg/archive/n$pkgver.tar.gz
@@ -78,6 +79,7 @@ build() {
     --enable-libspeex\
     --enable-libvidstab\
     --enable-libwebp\
+    --enable-libfreetype\
     
   then
     tail -n 100 ffbuild/config.log
