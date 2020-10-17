@@ -32,6 +32,7 @@ makedepends=(
   vid.stab
   libwebp
   freetype2
+  fontconfig
 )
 source=(
   FFmpeg-n$pkgver.tar.gz::https://github.com/FFmpeg/FFmpeg/archive/n$pkgver.tar.gz
@@ -80,6 +81,7 @@ build() {
     --enable-libvidstab\
     --enable-libwebp\
     --enable-libfreetype\
+    --enable-fontconfig\
     
   then
     tail -n 100 ffbuild/config.log

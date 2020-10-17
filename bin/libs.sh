@@ -67,7 +67,7 @@ cd /home/gabor/sw/ffmpeg-static/asp/libwebp
 sudo makechrootpkg -T -c -r $r
 
 cd /home/gabor/sw/ffmpeg-static/asp/libpng
-sudo makechrootpkg -T -c -r $r
+sudo makechrootpkg -T -c -r $r -I $p/zlib-*.pkg.tar.zst
 
 cd /home/gabor/sw/ffmpeg-static/asp/expat
 sudo makechrootpkg -T -c -r $r
@@ -75,3 +75,5 @@ sudo makechrootpkg -T -c -r $r
 cd /home/gabor/sw/ffmpeg-static/asp/freetype2
 sudo makechrootpkg -T -c -r $r -I $p/zlib-*.pkg.tar.zst -I $p/bzip2-*.pkg.tar.zst -I $p/libpng-*.pkg.tar.zst
 
+cd /home/gabor/sw/ffmpeg-static/asp/fontconfig
+sudo makechrootpkg -T -c -r $r -I $p/expat-*.pkg.tar.zst -I $p/freetype2-*.pkg.tar.zst -I $p/zlib-*.pkg.tar.zst -I $p/bzip2-*.pkg.tar.zst -I $p/libpng-*.pkg.tar.zst

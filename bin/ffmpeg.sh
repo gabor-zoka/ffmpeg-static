@@ -21,4 +21,5 @@ sudo makechrootpkg -T -c -r $r\
     -I $p/vid.stab-*.pkg.tar.zst\
     -I $p/libwebp-*.pkg.tar.zst\
     -I $p/freetype2-*.pkg.tar.zst -I $p/libpng-*.pkg.tar.zst\
+    -I $p/fontconfig-*.pkg.tar.zst -I $p/expat-*.pkg.tar.zst\
 
