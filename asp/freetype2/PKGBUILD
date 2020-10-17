@@ -41,7 +41,9 @@ prepare() {
 
 build() {
   cd freetype2
-  ./configure --prefix=/usr --disable-shared
+  ./configure --prefix=/usr\
+    --disable-shared\
+    --with-harfbuzz=no
   make
 }
 
@@ -51,7 +53,7 @@ check() {
 }
 
 package_freetype2() {
-  provides=(libfreetype.so)
+  provides=(libfreetype.a)
   install=freetype2.install
   backup=(etc/profile.d/freetype2.sh)
 
