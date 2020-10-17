@@ -12,6 +12,9 @@ sudo makechrootpkg -T -c -r $r
 cd /home/gabor/sw/ffmpeg-static/aur/libvorbis-aotuv
 sudo makechrootpkg -T -c -r $r -I $p/libogg-*.pkg.tar.zst
 
+cd /home/gabor/sw/ffmpeg-static/asp/zlib
+sudo makechrootpkg -T -c -r $r
+
 cd /home/gabor/sw/ffmpeg-static/asp/bzip2
 sudo makechrootpkg -T -c -r $r
 

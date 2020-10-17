@@ -29,7 +29,7 @@ build() {
 	cp Makefile Makefile.orig
 	cp ../README.contrib readme.txt
 	autoreconf --install
-	./configure --prefix=/usr --enable-static=no
+	./configure --prefix=/usr
 	make
 }
 
