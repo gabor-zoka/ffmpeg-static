@@ -10,7 +10,7 @@ arch=(x86_64)
 url=https://sourceforge.net/projects/opencore-amr/
 license=(custom)
 makedepends=(git)
-provides=(libfdk-aac.so)
+provides=(libfdk-aac.a)
 source=(git+https://github.com/mstorsjo/fdk-aac.git#tag=d387d3b6ed79ff9a82c60440bdd86e6e5e324bec)
 sha256sums=(SKIP)
 
@@ -31,7 +31,7 @@ build() {
 
   ./configure \
     --prefix=/usr \
-    --disable-static
+    --disable-shared
   make
 }
 

@@ -42,3 +42,9 @@ sudo makechrootpkg -T -c -r $r
 cd /home/gabor/sw/ffmpeg-static/asp/libsoxr
 sudo makechrootpkg -T -c -r $r
 
+cd /home/gabor/sw/ffmpeg-static/asp/libfdk-aac
+sudo makechrootpkg -T -c -r $r
+
+cd /home/gabor/sw/ffmpeg-static/asp/libvpx
+sudo makechrootpkg -T -c -r $r
+

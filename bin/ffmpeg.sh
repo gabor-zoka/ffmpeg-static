@@ -14,4 +14,7 @@ sudo makechrootpkg -T -c -r $r\
     -I $p/libsoxr-*.pkg.tar.zst\
     -I $p/libsndfile-*.pkg.tar.zst\
     -I $p/libbs2b-*.pkg.tar.zst\
-    -I $p/dav1d-*.pkg.tar.zst
+    -I $p/dav1d-*.pkg.tar.zst\
+    -I $p/libfdk-aac-*.pkg.tar.zst\
+    -I $p/libvpx-*.pkg.tar.zst\
+
