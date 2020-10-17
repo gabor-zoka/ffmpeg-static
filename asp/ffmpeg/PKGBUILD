@@ -43,11 +43,11 @@ build() {
 
   perl -i -p -e 's{-lsoxr}{-lsoxr -lm}' configure
 
-  ./configure \
+  if ! ./configure \
     --prefix=/usr \
-    --cpu=host \
+    --cpu=sandybridge \
     --pkg-config-flags=--static \
-    --extra-ldflags=-static \
+    --extra-ldflags='-static -lm' \
     --enable-gray \
     --disable-debug \
     --enable-gpl \
@@ -59,7 +59,11 @@ build() {
     --enable-libx264 \
     --enable-libmp3lame \
     --enable-libaom \
-    --enable-libsoxr
+    --enable-libsoxr \
+    --enable-libbs2b; then
+    tail -n 100 ffbuild/config.log
+    exit 1
+  fi
 
   make
 }

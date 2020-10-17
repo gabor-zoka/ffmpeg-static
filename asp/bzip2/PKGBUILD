@@ -17,6 +17,10 @@ validpgpkeys=('EC3CFE88F6CA0788774F5C1D1AA44BE649DE760A') # Mark Wielaard <mark@
 build() {
   cd $pkgname-$pkgver
 
+  # pacman dynamically liked to its shared lib. That is only built if -static 
+  # ld flag is not set. 
+  LDFLAGS="$(echo "$LDFLAGS" | perl -pe 's{-static}{}g')"
+
   make -f Makefile-libbz2_so CC="gcc $CFLAGS $LDFLAGS"
   make bzip2 bzip2recover CC="gcc $CFLAGS $LDFLAGS"
 }
