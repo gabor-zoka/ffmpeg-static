@@ -22,4 +22,5 @@ sudo makechrootpkg -T -c -r $r\
     -I $p/speexdsp-*.pkg.tar.zst\
     -I $p/speex-*.pkg.tar.zst\
     -I $p/vid.stab-*.pkg.tar.zst\
+    -I $p/libwebp-*.pkg.tar.zst\
 

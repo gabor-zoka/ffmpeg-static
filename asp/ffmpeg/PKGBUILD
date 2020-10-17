@@ -30,6 +30,7 @@ makedepends=(
   opus
   speex
   vid.stab
+  libwebp
 )
 source=(
   FFmpeg-n$pkgver.tar.gz::https://github.com/FFmpeg/FFmpeg/archive/n$pkgver.tar.gz
@@ -76,6 +77,7 @@ build() {
     --enable-libopus\
     --enable-libspeex\
     --enable-libvidstab\
+    --enable-libwebp\
     
   then
     tail -n 100 ffbuild/config.log

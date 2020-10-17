@@ -9,9 +9,7 @@ pkgdesc="WebP library and conversion tools"
 arch=(x86_64)
 url="https://developers.google.com/speed/webp/"
 license=(BSD)
-depends=(libpng libjpeg libtiff giflib)
-makedepends=(freeglut mesa glu git)
-optdepends=('freeglut: vwebp viewer')
+makedepends=(git)
 _commit=d7844e9762b61c9638c263657bd49e1690184832  # tags/v1.1.0-rc2^0
 source=("git+https://chromium.googlesource.com/webm/libwebp#commit=$_commit")
 sha256sums=('SKIP')
@@ -33,7 +31,11 @@ build() {
      --enable-swap-16bit-csp \
      --enable-experimental \
      --enable-libwebp{mux,demux,decoder,extras} \
-     --disable-static
+     --disable-shared \
+     --disable-jpeg \
+     --disable-png \
+     --disable-gif \
+     --disable-tiff
   sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
   make
 }
