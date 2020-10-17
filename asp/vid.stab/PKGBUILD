@@ -11,7 +11,7 @@ url='http://public.hronopik.de/vid.stab'
 license=('GPL')
 depends=('gcc-libs' 'glibc')
 makedepends=('cmake' 'git')
-provides=('libvidstab.so')
+provides=('libvidstab.a')
 _hash='2d82492533bf5004bc2c4f8213a1b622c45f6a44'
 source=("vid.stab-${pkgver}::git+https://github.com/georgmartius/vid.stab.git#commit=${_hash}")
 sha256sums=('SKIP')
@@ -29,7 +29,9 @@ build() {
   cd vid.stab-${pkgver}/build
 
   cmake .. \
-    -DCMAKE_INSTALL_PREFIX='/usr'
+    -DCMAKE_INSTALL_PREFIX='/usr'\
+    -DBUILD_SHARED_LIBS=OFF\
+    -DUSE_OMP=OFF
   make
 }
 
@@ -37,6 +39,9 @@ package() {
   cd vid.stab-${pkgver}/build
 
   make DESTDIR="${pkgdir}" install
+
+  # I need this hack to make ffmpeg configure pass.
+  perl -i -p -e 's{-lvidstab}{-lvidstab -lm}' "$pkgdir/usr/lib/pkgconfig/vidstab.pc"
 }
 
 # vim: ts=2 sw=2 et:

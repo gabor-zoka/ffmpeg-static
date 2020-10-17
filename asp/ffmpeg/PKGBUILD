@@ -27,6 +27,9 @@ makedepends=(
   dav1d
   libfdk-aac
   libvpx
+  opus
+  speex
+  vid.stab
 )
 source=(
   FFmpeg-n$pkgver.tar.gz::https://github.com/FFmpeg/FFmpeg/archive/n$pkgver.tar.gz
@@ -51,12 +54,13 @@ build() {
     --cpu=sandybridge\
     --pkg-config-flags=--static\
     --extra-ldflags='-static -lm'\
+    --fatal-warnings\
     --enable-gray\
-    --disable-debug\
     --enable-gpl\
+    --enable-nonfree\
     --disable-ffplay\
     --disable-doc\
-    --enable-nonfree\
+    --disable-debug\
     \
     --disable-encoder=vorbis\
     --enable-libvorbis\
@@ -68,7 +72,11 @@ build() {
     --enable-libbs2b\
     --enable-libdav1d\
     --enable-libfdk-aac\
-    --enable-libvpx
+    --enable-libvpx\
+    --enable-libopus\
+    --enable-libspeex\
+    --enable-libvidstab\
+    
   then
     tail -n 100 ffbuild/config.log
     exit 1

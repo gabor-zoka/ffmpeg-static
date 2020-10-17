@@ -48,3 +48,15 @@ sudo makechrootpkg -T -c -r $r
 cd /home/gabor/sw/ffmpeg-static/asp/libvpx
 sudo makechrootpkg -T -c -r $r
 
+cd /home/gabor/sw/ffmpeg-static/asp/opus
+sudo makechrootpkg -T -c -r $r
+
+cd /home/gabor/sw/ffmpeg-static/asp/speexdsp
+sudo makechrootpkg -T -c -r $r
+
+cd /home/gabor/sw/ffmpeg-static/asp/speex
+sudo makechrootpkg -T -c -r $r -I $p/libogg-*.pkg.tar.zst -I $p/speexdsp-*.pkg.tar.zst
+
+cd /home/gabor/sw/ffmpeg-static/asp/vid.stab
+sudo makechrootpkg -T -c -r $r
+

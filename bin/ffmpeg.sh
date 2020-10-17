@@ -17,4 +17,8 @@ sudo makechrootpkg -T -c -r $r\
     -I $p/dav1d-*.pkg.tar.zst\
     -I $p/libfdk-aac-*.pkg.tar.zst\
     -I $p/libvpx-*.pkg.tar.zst\
+    -I $p/opus-*.pkg.tar.zst\
+    -I $p/speexdsp-*.pkg.tar.zst\
+    -I $p/speex-*.pkg.tar.zst\
+    -I $p/vid.stab-*.pkg.tar.zst\
 
