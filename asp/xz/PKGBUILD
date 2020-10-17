@@ -17,10 +17,6 @@ validpgpkeys=('3690C240CE51B4670D30AD1C38EE757D69184620')
 build() {
 	cd ${srcdir}/${pkgname}-${pkgver}
 
-        # pacman dynamically liked to its shared lib. That is only built if 
-        # -static ld flag is not set. 
-        LDFLAGS="$(echo "$LDFLAGS" | perl -pe 's{-static}{}g')"
-
 	./configure --prefix=/usr \
 		--disable-rpath
 	make
