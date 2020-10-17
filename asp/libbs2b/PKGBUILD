@@ -21,6 +21,8 @@ prepare() {
 }
 
 build() {
+  LDFLAGS+=' -lm'
+
   cd $pkgname-$pkgver
   ./configure --prefix=/usr\
     --disable-shared
