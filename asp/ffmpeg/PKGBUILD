@@ -54,6 +54,28 @@ build() {
 
   perl -i -p -e 's{-lsoxr}{-lsoxr -lm}' configure
 
+  # TODO: Get this updated once you complied all external libs. Then run 
+  # ./bin/get-libvers.sh, and copy its output into this.
+  libvers='aom-2.0.0 dav1d-0.7.1 lame-3.100 libbs2b-3.1.0 libfdk-aac-2.0.1 libsoxr-0.1.3 libvorbis-aotuv-1.3.7_b6.03 libvpx-1.9.0 libwebp-1.1.0 opus-1.3.1 speex-1.2.0 vid.stab-1.1 x264-3:0.160.r3011.cde9a93 x265-3.4'
+
+  march="$(gcc $(perl -pe 's{-pipe}{}' <<<$CFLAGS) -Q --help=target | perl -lane 'if($F[0] eq q{-march=}){print $F[1]}')"
+
+  # We set the --extra-version with this trick (i.e. they do not sanitize the $extra_version var) so that
+  # it is not part of the configure command line as -version also prints out the configure command line, and
+  # then this long string would be there twice. https://johnvansickle.com/ffmpeg/ must apply this trick, too.
+  # 
+  # --extra-version needs an extra quoting as it will expand once internally due to
+  # lack of quoting and splits on whitespace and only the 1st element ('static') makes it.  
+  export extra_version="$(printf %q "static optimized for -march=$march with ${libvers}")"
+
+  # Monty said at 
+  # http://xiphmont.livejournal.com/51160.html?thread=145112#t145112: "The FFmpeg 
+  # internal encoder is just a very simple encoder that makes no attempt at high 
+  # quality. It includes no psychoacoustic code and its only goal is to spit out 
+  # a valid bitstream, not make it sound good.". 
+  # https://hydrogenaud.io/index.php/topic,81600.0.html also confirms. To avoid 
+  # accidents disable ffmpeg's own vorbis encoder: --disable-encoder=vorbis
+
   if ! ./configure\
     --prefix=/usr\
     --cpu=sandybridge\
