@@ -1,3 +1,7 @@
+#!/usr/bin/env bash
+
+set -e -u -o pipefail
+
 r=/mnt/gl.sys/chroot
 p=/home/gabor/sw/arch/pkg-static
 
