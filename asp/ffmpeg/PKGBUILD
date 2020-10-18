@@ -14,6 +14,7 @@ url=https://ffmpeg.org/
 license=(GPL3)
 # As static build, everything must be makedepends.
 makedepends=(
+  upx
   nasm
   libvorbis
   bzip2
@@ -118,9 +119,16 @@ build() {
 }
 
 package() {
-  make DESTDIR="${pkgdir}" -C FFmpeg-n$pkgver install
+  cd FFmpeg-n$pkgver
 
+  strip -s ffmpeg ffprobe
+  upx      ffmpeg ffprobe
 
+  mv ffmpeg  ffmpeg-st
+  mv ffprobe ffprobe-st
+
+  install -d -m 755                      "${pkgdir}/usr/bin"
+  install -c -m 755 ffmpeg-st ffprobe-st "${pkgdir}/usr/bin"
 }
 
 # vim: ts=2 sw=2 et:
