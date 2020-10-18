@@ -37,6 +37,7 @@ makedepends=(
   fribidi
   libass
 )
+options=(!strip)
 source=(
   FFmpeg-n$pkgver.tar.gz::https://github.com/FFmpeg/FFmpeg/archive/n$pkgver.tar.gz
   vmaf-model-path.patch
