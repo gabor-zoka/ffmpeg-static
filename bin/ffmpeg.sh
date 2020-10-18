@@ -22,4 +22,6 @@ sudo makechrootpkg -T -c -r $r\
     -I $p/libwebp-*.pkg.tar.zst\
     -I $p/freetype2-*.pkg.tar.zst -I $p/libpng-*.pkg.tar.zst\
     -I $p/fontconfig-*.pkg.tar.zst -I $p/expat-*.pkg.tar.zst\
+    -I $p/fribidi-*.pkg.tar.zst\
+    -I $p/libass-*.pkg.tar.zst\
 

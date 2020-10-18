@@ -11,7 +11,11 @@ arch=(x86_64)
 license=(LGPL)
 depends=(glibc)
 makedepends=(git meson)
-provides=(libfribidi.so)
+provides=(libfribidi.a)
+# Meson builds must not be stripped as it strips too aggressively:
+# https://github.com/mesonbuild/meson/issues/4138
+# As a result we get "undefined reference to `fribidi_version_info'"
+options=(!strip)
 _commit=5464c284034da9c058269377b7f5013bb089f553  # tags/v1.0.10^0
 source=("git+https://github.com/fribidi/fribidi#commit=$_commit")
 sha256sums=('SKIP')
@@ -27,7 +31,8 @@ prepare() {
 
 build() {
   arch-meson fribidi build \
-    -D docs=false
+    -D docs=false \
+    --default-library static
   meson compile -C build
 }
 
