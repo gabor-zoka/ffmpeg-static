@@ -80,7 +80,7 @@ build() {
     --prefix=/usr\
     --cpu=sandybridge\
     --pkg-config-flags=--static\
-    --extra-ldflags="$LDFLAGS"\
+    --extra-ldflags=-static\
     --fatal-warnings\
     --enable-gray\
     --enable-gpl\
@@ -119,6 +119,8 @@ build() {
 
 package() {
   make DESTDIR="${pkgdir}" -C FFmpeg-n$pkgver install
+
+
 }
 
 # vim: ts=2 sw=2 et:
