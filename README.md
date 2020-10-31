@@ -14,6 +14,8 @@ As gabor:
     perl -i -p -e 's{^\#PKGDEST=.*}{PKGDEST=/home/gabor/sw/arch/pkg-static}' ~/.makepkg.conf
     perl -i -p -e 's{^\#SRCDEST=.*}{SRCDEST=/home/gabor/sw/arch/src}'        ~/.makepkg.conf
 
+    mkdir -p ~/sw/arch/src ~/sw/arch/pkg-static
+
 Update chroot `makepkg.conf` for static build. I also want moderate optimisation 
 for older Sandybridge Intel, which still makes usable for most folks.
 
